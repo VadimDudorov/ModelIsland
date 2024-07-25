@@ -2,13 +2,13 @@ package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Herbivores;
 
-import static modelIsland.repository.AnimalParameters.goatParams;
+import static modelIsland.repository.AnimalParameters.goatParamsLocation;
 
 public class Goat extends Herbivores {
     public Goat(){
-        setWeight(goatParams[0]);
-        setMaxLocation(goatParams[1]);
-        setMaxMove(goatParams[2]);
-        setMaxEat(goatParams[3]);
+        setWeight(goatParamsLocation[0]);
+        setMaxLocation(goatParamsLocation[1]);
+        setMaxMove(goatParamsLocation[2]);
+        setMaxEat(goatParamsLocation[3]);
     }
 }

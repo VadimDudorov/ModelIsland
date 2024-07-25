@@ -21,22 +21,22 @@ public class Plant implements Animal{
     }
 
     @Override
-    public void eat(Animal food) {
+    public void eat(Animal food, Location id) {
 
     }
 
     @Override
-    public Location move() {
+    public Location move(Location id) {
         return null;
     }
 
     @Override
-    public Animal reproduce(Animal pair) {
+    public Animal reproduce(Animal pair, Location id) {
         return null;
     }
 
     @Override
-    public void dead() {
+    public void dead(Location id) {
 
     }
 }

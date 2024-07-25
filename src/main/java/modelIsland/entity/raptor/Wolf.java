@@ -2,13 +2,13 @@ package modelIsland.entity.raptor;
 
 import modelIsland.entity.Raptor;
 
-import static modelIsland.repository.AnimalParameters.wolfParams;
+import static modelIsland.repository.AnimalParameters.wolfParamsLocation;
 
 public class Wolf extends Raptor {
     public Wolf(){
-        setWeight(wolfParams[0]);
-        setMaxLocation(wolfParams[1]);
-        setMaxMove(wolfParams[2]);
-        setMaxEat(wolfParams[3]);
+        setWeight(wolfParamsLocation[0]);
+        setMaxLocation(wolfParamsLocation[1]);
+        setMaxMove(wolfParamsLocation[2]);
+        setMaxEat(wolfParamsLocation[3]);
     }
 }

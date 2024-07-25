@@ -2,13 +2,13 @@ package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Herbivores;
 
-import static modelIsland.repository.AnimalParameters.deerParams;
+import static modelIsland.repository.AnimalParameters.deerParamsLocation;
 
 public class Deer extends Herbivores {
     public Deer(){
-        setWeight(deerParams[0]);
-        setMaxLocation(deerParams[1]);
-        setMaxMove(deerParams[2]);
-        setMaxEat(deerParams[3]);
+        setWeight(deerParamsLocation[0]);
+        setMaxLocation(deerParamsLocation[1]);
+        setMaxMove(deerParamsLocation[2]);
+        setMaxEat(deerParamsLocation[3]);
     }
 }

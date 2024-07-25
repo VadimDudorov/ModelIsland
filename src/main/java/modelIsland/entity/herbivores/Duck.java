@@ -2,13 +2,13 @@ package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Herbivores;
 
-import static modelIsland.repository.AnimalParameters.duckParams;
+import static modelIsland.repository.AnimalParameters.duckParamsLocation;
 
 public class Duck extends Herbivores {
     public Duck(){
-        setWeight(duckParams[0]);
-        setMaxLocation(duckParams[1]);
-        setMaxMove(duckParams[2]);
-        setMaxEat(duckParams[3]);
+        setWeight(duckParamsLocation[0]);
+        setMaxLocation(duckParamsLocation[1]);
+        setMaxMove(duckParamsLocation[2]);
+        setMaxEat(duckParamsLocation[3]);
     }
 }

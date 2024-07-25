@@ -2,13 +2,13 @@ package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Herbivores;
 
-import static modelIsland.repository.AnimalParameters.mouseParams;
+import static modelIsland.repository.AnimalParameters.mouseParamsLocation;
 
 public class Mouse extends Herbivores {
     public Mouse(){
-        setWeight(mouseParams[0]);
-        setMaxLocation(mouseParams[1]);
-        setMaxMove(mouseParams[2]);
-        setMaxEat(mouseParams[3]);
+        setWeight(mouseParamsLocation[0]);
+        setMaxLocation(mouseParamsLocation[1]);
+        setMaxMove(mouseParamsLocation[2]);
+        setMaxEat(mouseParamsLocation[3]);
     }
 }

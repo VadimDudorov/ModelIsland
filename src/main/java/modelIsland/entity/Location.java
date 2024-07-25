@@ -4,18 +4,20 @@ import modelIsland.entity.herbivores.*;
 import modelIsland.entity.raptor.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static modelIsland.repository.AnimalParameters.*;
 
 public class Location {
-    private static int idLocation;
+    private int idLocation;
     private List<Plant> plants = new ArrayList<>();
     private List<Bear> bears = new ArrayList<>();
     private List<Boa> boas = new ArrayList<>();
     private List<Eagle> eagles = new ArrayList<>();
     private List<Fox> foxes = new ArrayList<>();
-    private List<Wolf> wolves = new ArrayList<>();
+    private List<Wolf> wolfs = new ArrayList<>();
     private List<Bull> bulls = new ArrayList<>();
     private List<Caterpillar> caterpillars = new ArrayList<>();
     private List<Deer> deers = new ArrayList<>();
@@ -27,62 +29,67 @@ public class Location {
     private List<Rabbit> rabbits = new ArrayList<>();
     private List<Sheep> sheeps = new ArrayList<>();
 
-    public Location() {
-        idLocation = ++idLocation;
+    public Location(int idLocation) {
+        this.idLocation = idLocation;
+    }
+
+    public int getIdLocation() {
+        return idLocation;
     }
 
     public void addAnimal(Animal animal) {
-        if (animal instanceof Plant && plants.size() < plantParams[1]) {
+
+        if (animal instanceof Plant && plants.size() < plantParamsLocation[1]) {
             plants.add((Plant) animal);
         }
-        if (animal instanceof Bear && bears.size() < bearParams[1]) {
+        if (animal instanceof Bear && bears.size() < bearParamsLocation[1]) {
             bears.add((Bear) animal);
         }
-        if (animal instanceof Boa && boas.size() < boaParams[1]) {
+        if (animal instanceof Boa && boas.size() < boaParamsLocation[1]) {
             boas.add((Boa) animal);
         }
-        if (animal instanceof Eagle && eagles.size() < eagleParams[1]) {
+        if (animal instanceof Eagle && eagles.size() < eagleParamsLocation[1]) {
             eagles.add((Eagle) animal);
         }
-        if (animal instanceof Fox && foxes.size() < foxParams[1]) {
+        if (animal instanceof Fox && foxes.size() < foxParamsLocation[1]) {
             foxes.add((Fox) animal);
         }
-        if (animal instanceof Wolf && wolves.size() < wolfParams[1]) {
-            wolves.add((Wolf) animal);
+        if (animal instanceof Wolf && wolfs.size() < wolfParamsLocation[1]) {
+            wolfs.add((Wolf) animal);
         }
-        if (animal instanceof Bull && bulls.size() < bullParams[1]) {
+        if (animal instanceof Bull && bulls.size() < bullParamsLocation[1]) {
             bulls.add((Bull) animal);
         }
-        if (animal instanceof Caterpillar && caterpillars.size() < caterpillarParams[1]) {
+        if (animal instanceof Caterpillar && caterpillars.size() < caterpillarParamsLocation[1]) {
             caterpillars.add((Caterpillar) animal);
         }
-        if (animal instanceof Deer && deers.size() < deerParams[1]) {
+        if (animal instanceof Deer && deers.size() < deerParamsLocation[1]) {
             deers.add((Deer) animal);
         }
-        if (animal instanceof Duck && ducks.size() < duckParams[1]) {
+        if (animal instanceof Duck && ducks.size() < duckParamsLocation[1]) {
             ducks.add((Duck) animal);
         }
-        if (animal instanceof Goat && goats.size() < goatParams[1]) {
+        if (animal instanceof Goat && goats.size() < goatParamsLocation[1]) {
             goats.add((Goat) animal);
         }
-        if (animal instanceof Hog && hogs.size() < hogParams[1]) {
+        if (animal instanceof Hog && hogs.size() < hogParamsLocation[1]) {
             hogs.add((Hog) animal);
         }
-        if (animal instanceof Horse && horses.size() < horseParams[1]) {
+        if (animal instanceof Horse && horses.size() < horseParamsLocation[1]) {
             horses.add((Horse) animal);
         }
-        if (animal instanceof Mouse && mouses.size() < mouseParams[1]) {
+        if (animal instanceof Mouse && mouses.size() < mouseParamsLocation[1]) {
             mouses.add((Mouse) animal);
         }
-        if (animal instanceof Rabbit && rabbits.size() < rabbitParams[1]) {
+        if (animal instanceof Rabbit && rabbits.size() < rabbitParamsLocation[1]) {
             rabbits.add((Rabbit) animal);
         }
-        if (animal instanceof Sheep && sheeps.size() < sheepParams[1]) {
+        if (animal instanceof Sheep && sheeps.size() < sheepParamsLocation[1]) {
             sheeps.add((Sheep) animal);
         }
     }
 
-    public void removeAnimal(Animal animal){
+    public void removeAnimal(Animal animal) {
         if (animal instanceof Plant && !plants.isEmpty()) {
             plants.add((Plant) animal);
         }
@@ -98,8 +105,8 @@ public class Location {
         if (animal instanceof Fox && !foxes.isEmpty()) {
             foxes.add((Fox) animal);
         }
-        if (animal instanceof Wolf && !wolves.isEmpty()) {
-            wolves.add((Wolf) animal);
+        if (animal instanceof Wolf && !wolfs.isEmpty()) {
+            wolfs.add((Wolf) animal);
         }
         if (animal instanceof Bull && !bulls.isEmpty()) {
             bulls.add((Bull) animal);
@@ -132,5 +139,24 @@ public class Location {
             sheeps.add((Sheep) animal);
         }
     }
-    
+
+    public Map<String, Integer> countAnimals() {
+        Map<String, Integer> countMap = new HashMap<>();
+        countMap.put(nameAnimals[0], wolfs.size());
+        countMap.put(nameAnimals[1], boas.size());
+        countMap.put(nameAnimals[2], foxes.size());
+        countMap.put(nameAnimals[3], bears.size());
+        countMap.put(nameAnimals[4], eagles.size());
+        countMap.put(nameAnimals[5], horses.size());
+        countMap.put(nameAnimals[6], deers.size());
+        countMap.put(nameAnimals[7], rabbits.size());
+        countMap.put(nameAnimals[8], mouses.size());
+        countMap.put(nameAnimals[9], goats.size());
+        countMap.put(nameAnimals[10], sheeps.size());
+        countMap.put(nameAnimals[11], hogs.size());
+        countMap.put(nameAnimals[12], bulls.size());
+        countMap.put(nameAnimals[13], ducks.size());
+        countMap.put(nameAnimals[14], caterpillars.size());
+        return countMap;
+    }
 }

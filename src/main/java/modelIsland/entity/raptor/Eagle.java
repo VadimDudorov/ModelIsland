@@ -2,13 +2,13 @@ package modelIsland.entity.raptor;
 
 import modelIsland.entity.Raptor;
 
-import static modelIsland.repository.AnimalParameters.eagleParams;
+import static modelIsland.repository.AnimalParameters.eagleParamsLocation;
 
 public class Eagle extends Raptor {
     public Eagle(){
-        setWeight(eagleParams[0]);
-        setMaxLocation(eagleParams[1]);
-        setMaxMove(eagleParams[2]);
-        setMaxEat(eagleParams[3]);
+        setWeight(eagleParamsLocation[0]);
+        setMaxLocation(eagleParamsLocation[1]);
+        setMaxMove(eagleParamsLocation[2]);
+        setMaxEat(eagleParamsLocation[3]);
     }
 }

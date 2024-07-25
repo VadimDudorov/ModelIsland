@@ -2,13 +2,13 @@ package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Herbivores;
 
-import static modelIsland.repository.AnimalParameters.horseParams;
+import static modelIsland.repository.AnimalParameters.horseParamsLocation;
 
 public class Horse extends Herbivores {
     public Horse(){
-        setWeight(horseParams[0]);
-        setMaxLocation(horseParams[1]);
-        setMaxMove(horseParams[2]);
-        setMaxEat(horseParams[3]);
+        setWeight(horseParamsLocation[0]);
+        setMaxLocation(horseParamsLocation[1]);
+        setMaxMove(horseParamsLocation[2]);
+        setMaxEat(horseParamsLocation[3]);
     }
 }

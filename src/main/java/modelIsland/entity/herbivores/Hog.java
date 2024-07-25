@@ -2,13 +2,13 @@ package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Herbivores;
 
-import static modelIsland.repository.AnimalParameters.hogParams;
+import static modelIsland.repository.AnimalParameters.hogParamsLocation;
 
 public class Hog extends Herbivores {
     public Hog(){
-        setWeight(hogParams[0]);
-        setMaxLocation(hogParams[1]);
-        setMaxMove(hogParams[2]);
-        setMaxEat(hogParams[3]);
+        setWeight(hogParamsLocation[0]);
+        setMaxLocation(hogParamsLocation[1]);
+        setMaxMove(hogParamsLocation[2]);
+        setMaxEat(hogParamsLocation[3]);
     }
 }
