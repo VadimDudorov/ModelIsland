@@ -39,7 +39,7 @@ public abstract class Herbivores implements Animal {
     }
 
     @Override
-    public void eat(Animal food,Location id) {
+    public void eat(Location id) {
 
     }
 

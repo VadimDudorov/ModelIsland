@@ -21,7 +21,7 @@ public class Plant implements Animal{
     }
 
     @Override
-    public void eat(Animal food, Location id) {
+    public void eat(Location id) {
 
     }
 

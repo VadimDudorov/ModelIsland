@@ -3,12 +3,14 @@ package modelIsland.entity.raptor;
 import modelIsland.entity.Raptor;
 
 import static modelIsland.repository.AnimalParameters.bearParamsLocation;
+import static modelIsland.repository.AnimalParameters.bearProbability;
 
 public class Bear extends Raptor {
-    public Bear(){
-        setWeight(bearParamsLocation[0]);
-        setMaxLocation(bearParamsLocation[1]);
-        setMaxMove(bearParamsLocation[2]);
-        setMaxEat(bearParamsLocation[3]);
+    public Bear() {
+        super(bearParamsLocation[0],
+                bearParamsLocation[1],
+                bearParamsLocation[2],
+                bearParamsLocation[3],
+                bearProbability);
     }
 }

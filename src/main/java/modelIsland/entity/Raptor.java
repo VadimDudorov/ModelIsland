@@ -1,7 +1,9 @@
 package modelIsland.entity;
 
+import modelIsland.entity.raptor.*;
 import modelIsland.utilityClass.UtillitRandom;
 
+import java.util.List;
 import java.util.Map;
 
 import static modelIsland.repository.AnimalParameters.arraysParametersLocation;
@@ -15,6 +17,14 @@ public abstract class Raptor implements Animal {
     private int gender = UtillitRandom.getRandom(2);
     private boolean pair;
     private Map<String, Integer> probabilityAnimal;
+
+    public Raptor(double weight, double maxLocation, double maxMove, double maxEat, Map<String, Integer> probabilityAnimal) {
+        this.weight = weight;
+        this.maxLocation = maxLocation;
+        this.maxMove = maxMove;
+        this.maxEat = maxEat;
+        this.probabilityAnimal = probabilityAnimal;
+    }
 
     public boolean isPair() {
         return pair;
@@ -44,24 +54,8 @@ public abstract class Raptor implements Animal {
         return maxEat;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public void setMaxLocation(double maxLocation) {
-        this.maxLocation = maxLocation;
-    }
-
-    public void setMaxMove(double maxMove) {
-        this.maxMove = maxMove;
-    }
-
-    public void setMaxEat(double maxEat) {
-        this.maxEat = maxEat;
-    }
-
     @Override
-    public void eat(Animal food, Location id) {
+    public void eat(Location id) {
         int number = UtillitRandom.getRandom(listNameAnimals.size());
         Map<String, Integer> countAnimalLocation = id.countAnimals();
         String foodName = listNameAnimals.get(number);
@@ -69,18 +63,18 @@ public abstract class Raptor implements Animal {
         if (countFood != null && countFood != 0) {
             int probabilityEating = probabilityAnimal.get(foodName);
             if (probabilityEating != 0 && UtillitRandom.getRandom(101) >= probabilityEating) {
-                id.removeAnimal(food);
+                id.removeAnimal(foodName);
                 double weightFood = arraysParametersLocation.get(foodName)[0];
                 if (weightFood <= maxEat) {
-                    setWeight(this.weight + weightFood);
+                    weight = weight + weightFood;
                 } else {
-                    setWeight(this.weight + maxEat);
+                    weight = weight + maxEat;
                 }
             } else {
-                setWeight(getWeight() - (weight * 0.10));
+                weight = weight - (weight * 0.10);
             }
         } else {
-            setWeight(getWeight() - (weight * 0.10));
+            weight = weight - (weight * 0.10);
         }
     }
 
@@ -91,12 +85,42 @@ public abstract class Raptor implements Animal {
     }
 
     @Override
-    public Animal reproduce(Animal pair, Location id) {
-        return null;
+    public void reproduce(Location id) {
+        if (gender == 2) {
+            return;
+        }
+        String nameClass = this.getClass().getSimpleName();
+        List<? extends Animal> animals = id.getMapsAnimal(nameClass);
+        if (!animals.isEmpty()) {
+            List<? extends Animal> list = animals.stream().filter(e -> {
+                if (e instanceof Raptor raptor) {
+                    return raptor.isPair();
+                }
+                return false;
+            }).toList();
+            if (!list.isEmpty()) {
+                Raptor animal = (Raptor) list.get(0);
+                if (id.addAnimal(addReproduce(nameClass))) {
+                    animal.setPair(false);
+                }
+            }
+        }
     }
 
     @Override
     public void dead(Location id) {
 
+    }
+
+    private Animal addReproduce(String name) {
+        RuntimeException runtimeException = new RuntimeException();
+        return switch (name) {
+            case "Wolf" -> new Wolf();
+            case "Boa" -> new Boa();
+            case "Fox" -> new Fox();
+            case "Eagle" -> new Eagle();
+            case "Bear" -> new Bear();
+            default -> throw runtimeException;
+        };
     }
 }
