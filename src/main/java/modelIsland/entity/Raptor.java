@@ -1,14 +1,17 @@
 package modelIsland.entity;
 
 import modelIsland.entity.raptor.*;
+import modelIsland.repository.AnimalParameters;
 import modelIsland.utilityClass.UtillitRandom;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static modelIsland.repository.AnimalParameters.*;
 
 public abstract class Raptor implements Animal {
+    private int idObject = AnimalParameters.idObject++;
     private double weight;
     private double maxLocation;
     private double maxMove;
@@ -123,6 +126,9 @@ public abstract class Raptor implements Animal {
             Location moveLocation = Island.getIsland().getIdLocations(idMoveLocation);
             if (moveLocation.addAnimal(this)) {
                 id.removeAnimal(nameClass, this);
+                if (!this.isPair()) {
+                    pair = true;
+                }
                 return moveLocation;
             }
         }
@@ -167,4 +173,19 @@ public abstract class Raptor implements Animal {
             default -> throw runtimeException;
         };
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Raptor raptor = (Raptor) o;
+        return idObject == raptor.idObject;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(idObject);
+    }
 }
+
+

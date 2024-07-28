@@ -4,7 +4,7 @@ public class Plant implements Animal {
     private int weight;
     private int maxLocation;
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
