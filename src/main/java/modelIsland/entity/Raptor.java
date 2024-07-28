@@ -6,8 +6,7 @@ import modelIsland.utilityClass.UtillitRandom;
 import java.util.List;
 import java.util.Map;
 
-import static modelIsland.repository.AnimalParameters.arraysParametersLocation;
-import static modelIsland.repository.AnimalParameters.listNameAnimals;
+import static modelIsland.repository.AnimalParameters.*;
 
 public abstract class Raptor implements Animal {
     private double weight;
@@ -57,14 +56,14 @@ public abstract class Raptor implements Animal {
     @Override
     public void eat(Location id) {
         int number = UtillitRandom.getRandom(listNameAnimals.size());
-        Map<String, Integer> countAnimalLocation = id.countAnimals();
         String foodName = listNameAnimals.get(number);
-        Integer countFood = countAnimalLocation.get(foodName);
-        if (countFood != null && countFood != 0) {
+        List<? extends Animal> animalsList = id.countAnimals(foodName);
+        if (!animalsList.isEmpty()) {
             int probabilityEating = probabilityAnimal.get(foodName);
             if (probabilityEating != 0 && UtillitRandom.getRandom(101) >= probabilityEating) {
-                id.removeAnimal(foodName);
-                double weightFood = arraysParametersLocation.get(foodName)[0];
+                Animal animalFoodObject = animalsList.get(0);
+                id.removeAnimal(foodName, animalFoodObject);
+                double weightFood = animalFoodObject.getWeight();
                 if (weightFood <= maxEat) {
                     weight = weight + weightFood;
                 } else {
@@ -80,7 +79,53 @@ public abstract class Raptor implements Animal {
 
     @Override
     public Location move(Location id) {
-
+        int goLocation;
+        String nameClass = this.getClass().getSimpleName();
+        int acceptableCountSteps = (int) arraysParametersLocation.get(nameClass)[2];
+        int resultMoveSteps = UtillitRandom.getRandom(acceptableCountSteps) + 1;
+        int whatDirection = UtillitRandom.getRandom(4) + 1;
+        int idMoveLocation = switch (whatDirection) {
+            case 1 -> {
+                goLocation = id.getIdLocation() - resultMoveSteps;
+                if (goLocation >= 0) {
+                    yield goLocation;
+                } else {
+                    yield -1;
+                }
+            }
+            case 2 -> {
+                goLocation = id.getIdLocation() + (resultMoveSteps * HEIGHT_ISLAND);
+                if (goLocation <= sizeIsland) {
+                    yield goLocation;
+                } else {
+                    yield -1;
+                }
+            }
+            case 3 -> {
+                goLocation = id.getIdLocation() + resultMoveSteps;
+                if (goLocation <= sizeIsland) {
+                    yield goLocation;
+                } else {
+                    yield -1;
+                }
+            }
+            case 4 -> {
+                goLocation = id.getIdLocation() - (resultMoveSteps * HEIGHT_ISLAND);
+                if (goLocation >= 0) {
+                    yield goLocation;
+                } else {
+                    yield -1;
+                }
+            }
+            default -> -1;
+        };
+        if (idMoveLocation >= 0) {
+            Location moveLocation = Island.getIsland().getIdLocations(idMoveLocation);
+            if (moveLocation.addAnimal(this)) {
+                id.removeAnimal(nameClass, this);
+                return moveLocation;
+            }
+        }
         return null;
     }
 
@@ -90,18 +135,13 @@ public abstract class Raptor implements Animal {
             return;
         }
         String nameClass = this.getClass().getSimpleName();
-        List<? extends Animal> animals = id.getMapsAnimal(nameClass);
-        if (!animals.isEmpty()) {
-            List<? extends Animal> list = animals.stream().filter(e -> {
-                if (e instanceof Raptor raptor) {
-                    return raptor.isPair();
-                }
-                return false;
-            }).toList();
-            if (!list.isEmpty()) {
-                Raptor animal = (Raptor) list.get(0);
+        List<? extends Animal> animalsList = id.countAnimals(nameClass);
+        if (!animalsList.isEmpty()) {
+            List<Raptor> listPair = animalsList.stream().map(e -> (Raptor) e).filter(Raptor::isPair).toList();
+            if (!listPair.isEmpty()) {
+                Raptor animalPair = listPair.get(0);
                 if (id.addAnimal(addReproduce(nameClass))) {
-                    animal.setPair(false);
+                    animalPair.setPair(false);
                 }
             }
         }
@@ -109,6 +149,10 @@ public abstract class Raptor implements Animal {
 
     @Override
     public void dead(Location id) {
+        double expectedWeight = this.weight * 0.25;
+        if (this.weight <= expectedWeight) {
+            id.removeAnimal(this.getClass().getSimpleName(), this);
+        }
 
     }
 

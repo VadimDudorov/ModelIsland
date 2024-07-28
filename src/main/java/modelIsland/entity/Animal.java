@@ -5,4 +5,5 @@ public interface Animal {
    Location move(Location id);
    void reproduce(Location id);
    void dead(Location id);
+   double getWeight();
 }

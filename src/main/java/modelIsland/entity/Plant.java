@@ -1,6 +1,6 @@
 package modelIsland.entity;
 
-public class Plant implements Animal{
+public class Plant implements Animal {
     private int weight;
     private int maxLocation;
 
@@ -31,8 +31,7 @@ public class Plant implements Animal{
     }
 
     @Override
-    public Animal reproduce(Animal pair, Location id) {
-        return null;
+    public void reproduce(Location id) {
     }
 
     @Override

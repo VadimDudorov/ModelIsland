@@ -11,23 +11,23 @@ import java.util.Map;
 import static modelIsland.repository.AnimalParameters.*;
 
 public class Location {
-    private int idLocation;
-    private List<Wolf> wolfs = new ArrayList<>();
-    private List<Boa> boas = new ArrayList<>();
-    private List<Fox> foxes = new ArrayList<>();
-    private List<Bear> bears = new ArrayList<>();
-    private List<Eagle> eagles = new ArrayList<>();
-    private List<Horse> horses = new ArrayList<>();
-    private List<Deer> dears = new ArrayList<>();
-    private List<Rabbit> rabbits = new ArrayList<>();
-    private List<Mouse> mouses = new ArrayList<>();
-    private List<Goat> goats = new ArrayList<>();
-    private List<Sheep> sheeps = new ArrayList<>();
-    private List<Hog> hogs = new ArrayList<>();
-    private List<Bull> bulls = new ArrayList<>();
-    private List<Duck> ducks = new ArrayList<>();
-    private List<Caterpillar> caterpillars = new ArrayList<>();
-    private List<Plant> plants = new ArrayList<>();
+    private final int idLocation;
+    private final List<Wolf> wolfs = new ArrayList<>();
+    private final List<Boa> boas = new ArrayList<>();
+    private final List<Fox> foxes = new ArrayList<>();
+    private final List<Bear> bears = new ArrayList<>();
+    private final List<Eagle> eagles = new ArrayList<>();
+    private final List<Horse> horses = new ArrayList<>();
+    private final List<Deer> dears = new ArrayList<>();
+    private final List<Rabbit> rabbits = new ArrayList<>();
+    private final List<Mouse> mouses = new ArrayList<>();
+    private final List<Goat> goats = new ArrayList<>();
+    private final List<Sheep> sheeps = new ArrayList<>();
+    private final List<Hog> hogs = new ArrayList<>();
+    private final List<Bull> bulls = new ArrayList<>();
+    private final List<Duck> ducks = new ArrayList<>();
+    private final List<Caterpillar> caterpillars = new ArrayList<>();
+    private final List<Plant> plants = new ArrayList<>();
 
     private Map<String, List<? extends Animal>> mapsAnimal = new HashMap<>() {{
         mapsAnimal.put(nameAnimals[0], wolfs);
@@ -124,82 +124,12 @@ public class Location {
         return false;
     }
 
-    public boolean removeAnimal(String nameAnimal) {
+    public boolean removeAnimal(String nameAnimal, Animal animal){
         List<? extends Animal> animals = mapsAnimal.get(nameAnimal);
-        animals.remove(0);
-        return true;
-
-
-//        if (animal instanceof Plant && !plants.isEmpty()) {
-//            plants.add((Plant) animal);
-//        }
-//        if (animal instanceof Bear && !bears.isEmpty()) {
-//            bears.add((Bear) animal);
-//        }
-//        if (animal instanceof Boa && !boas.isEmpty()) {
-//            boas.add((Boa) animal);
-//        }
-//        if (animal instanceof Eagle && !eagles.isEmpty()) {
-//            eagles.add((Eagle) animal);
-//        }
-//        if (animal instanceof Fox && !foxes.isEmpty()) {
-//            foxes.add((Fox) animal);
-//        }
-//        if (animal instanceof Wolf && !wolfs.isEmpty()) {
-//            wolfs.add((Wolf) animal);
-//        }
-//        if (animal instanceof Bull && !bulls.isEmpty()) {
-//            bulls.add((Bull) animal);
-//        }
-//        if (animal instanceof Caterpillar && !caterpillars.isEmpty()) {
-//            caterpillars.add((Caterpillar) animal);
-//        }
-//        if (animal instanceof Deer && !dears.isEmpty()) {
-//            dears.add((Deer) animal);
-//        }
-//        if (animal instanceof Duck && !ducks.isEmpty()) {
-//            ducks.add((Duck) animal);
-//        }
-//        if (animal instanceof Goat && !goats.isEmpty()) {
-//            goats.add((Goat) animal);
-//        }
-//        if (animal instanceof Hog && !hogs.isEmpty()) {
-//            hogs.add((Hog) animal);
-//        }
-//        if (animal instanceof Horse && !horses.isEmpty()) {
-//            horses.add((Horse) animal);
-//        }
-//        if (animal instanceof Mouse && !mouses.isEmpty()) {
-//            mouses.add((Mouse) animal);
-//        }
-//        if (animal instanceof Rabbit && !rabbits.isEmpty()) {
-//            rabbits.add((Rabbit) animal);
-//        }
-//        if (animal instanceof Sheep && !sheeps.isEmpty()) {
-//            sheeps.add((Sheep) animal);
-//        }
+        return animals.remove(animal);
     }
 
-    public Map<String, Integer> countAnimals() {
-        Map<String, Integer> countMap = new HashMap<>();
-        countMap.put(nameAnimals[0], wolfs.size());
-        countMap.put(nameAnimals[1], boas.size());
-        countMap.put(nameAnimals[2], foxes.size());
-        countMap.put(nameAnimals[3], bears.size());
-        countMap.put(nameAnimals[4], eagles.size());
-        countMap.put(nameAnimals[5], horses.size());
-        countMap.put(nameAnimals[6], dears.size());
-        countMap.put(nameAnimals[7], rabbits.size());
-        countMap.put(nameAnimals[8], mouses.size());
-        countMap.put(nameAnimals[9], goats.size());
-        countMap.put(nameAnimals[10], sheeps.size());
-        countMap.put(nameAnimals[11], hogs.size());
-        countMap.put(nameAnimals[12], bulls.size());
-        countMap.put(nameAnimals[13], ducks.size());
-        countMap.put(nameAnimals[14], caterpillars.size());
-        return countMap;
-    }
-    public List<? extends Animal> getMapsAnimal(String name){
-        return mapsAnimal.get(name);
+    public List<? extends Animal> countAnimals(String nameAnimal) {
+        return mapsAnimal.get(nameAnimal);
     }
 }

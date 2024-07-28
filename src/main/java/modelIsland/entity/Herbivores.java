@@ -49,8 +49,7 @@ public abstract class Herbivores implements Animal {
     }
 
     @Override
-    public Animal reproduce(Animal pair,Location id) {
-        return null;
+    public void reproduce(Location id) {
     }
 
     @Override
