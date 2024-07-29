@@ -7,7 +7,7 @@ public class AnimalParameters {
     public static final int sizeIsland = 2000;
     public static final int HEIGHT_ISLAND = 20;
     public static final int WEIGHT_ISLAND = 100;
-    public static volatile int idObject;
+    public static volatile int idObject = 1;
 
     public static final String[] nameAnimals = {"Wolf, Boa", "Fox", "Bear", "Eagle", "Horse", "Deer", "Rabbit", "Mouse",
             "Goat", "Sheep", "Hog", "Bull", "Duck", "Caterpillar", "Plant"};

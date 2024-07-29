@@ -163,14 +163,13 @@ public abstract class Raptor implements Animal {
     }
 
     private Animal addReproduce(String name) {
-        RuntimeException runtimeException = new RuntimeException();
         return switch (name) {
             case "Wolf" -> new Wolf();
             case "Boa" -> new Boa();
             case "Fox" -> new Fox();
             case "Eagle" -> new Eagle();
             case "Bear" -> new Bear();
-            default -> throw runtimeException;
+            default -> throw new RuntimeException("При создании объекта Raptor не найден подходящий класс");
         };
     }
 

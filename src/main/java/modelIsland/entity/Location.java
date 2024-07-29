@@ -3,10 +3,7 @@ package modelIsland.entity;
 import modelIsland.entity.herbivores.*;
 import modelIsland.entity.raptor.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static modelIsland.repository.AnimalParameters.*;
 
@@ -49,6 +46,12 @@ public class Location {
 
     public Location(int idLocation) {
         this.idLocation = idLocation;
+        for (int i = 0; i < nameAnimals.length; i++) {
+            int count = (int) arraysParametersLocation.get(nameAnimals[i])[1];
+            for (int j = 1; j < count * 0.25; j++) {
+                initialize(nameAnimals[i]);
+            }
+        }
     }
 
     public int getIdLocation() {
@@ -124,12 +127,34 @@ public class Location {
         return false;
     }
 
-    public boolean removeAnimal(String nameAnimal, Animal animal){
+    public boolean removeAnimal(String nameAnimal, Animal animal) {
         List<? extends Animal> animals = mapsAnimal.get(nameAnimal);
         return animals.remove(animal);
     }
 
     public List<? extends Animal> countAnimals(String nameAnimal) {
         return mapsAnimal.get(nameAnimal);
+    }
+
+    private void initialize(String name) {
+        switch (name) {
+            case "Wolf" -> wolfs.add(new Wolf());
+            case "Boa" -> boas.add(new Boa());
+            case "Fox" -> foxes.add(new Fox());
+            case "Bear" -> bears.add(new Bear());
+            case "Eagle" -> eagles.add(new Eagle());
+            case "Horse" -> horses.add(new Horse());
+            case "Deer" -> dears.add(new Deer());
+            case "Rabbit" -> rabbits.add(new Rabbit());
+            case "Mouse" -> mouses.add(new Mouse());
+            case "Goat" -> goats.add(new Goat());
+            case "Sheep" -> sheeps.add(new Sheep());
+            case "Hog" -> hogs.add(new Hog());
+            case "Bull" -> bulls.add(new Bull());
+            case "Duck" -> ducks.add(new Duck());
+            case "Caterpillar" -> caterpillars.add(new Caterpillar());
+            case "Plant" -> plants.add(new Plant());
+            default -> throw new RuntimeException("При инициализации не найден подходящий класс");
+        }
     }
 }
