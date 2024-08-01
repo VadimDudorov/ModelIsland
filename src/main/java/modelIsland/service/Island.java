@@ -1,4 +1,4 @@
-package modelIsland.entity;
+package modelIsland.service;
 
 import static modelIsland.repository.AnimalParameters.sizeIsland;
 

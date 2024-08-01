@@ -1,5 +1,7 @@
 package modelIsland.entity;
 
+import modelIsland.service.Location;
+
 public class Plant implements Animal {
     private int weight;
     private int maxLocation;

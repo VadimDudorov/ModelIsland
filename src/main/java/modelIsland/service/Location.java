@@ -1,5 +1,7 @@
-package modelIsland.entity;
+package modelIsland.service;
 
+import modelIsland.entity.Animal;
+import modelIsland.entity.Plant;
 import modelIsland.entity.herbivores.*;
 import modelIsland.entity.raptor.*;
 
@@ -156,5 +158,8 @@ public class Location {
             case "Plant" -> plants.add(new Plant());
             default -> throw new RuntimeException("При инициализации не найден подходящий класс");
         }
+    }
+    private void lifeCicl(Location id){
+        //TODO дописать логику по жизненному циклу животных
     }
 }

@@ -1,5 +1,7 @@
 package modelIsland.entity;
 
+import modelIsland.service.Island;
+import modelIsland.service.Location;
 import modelIsland.entity.raptor.*;
 import modelIsland.repository.AnimalParameters;
 import modelIsland.utilityClass.UtillitRandom;
@@ -19,8 +21,13 @@ public abstract class Raptor implements Animal {
     private int gender = UtillitRandom.getRandom(2);
     private boolean pair;
     private Map<String, Integer> probabilityAnimal;
+    private String nameClass = this.getClass().getSimpleName();
 
-    public Raptor(double weight, double maxLocation, double maxMove, double maxEat, Map<String, Integer> probabilityAnimal) {
+    public Raptor(double weight,
+                  double maxLocation,
+                  double maxMove,
+                  double maxEat,
+                  Map<String, Integer> probabilityAnimal) {
         this.weight = weight;
         this.maxLocation = maxLocation;
         this.maxMove = maxMove;
@@ -58,12 +65,12 @@ public abstract class Raptor implements Animal {
 
     @Override
     public void eat(Location id) {
-        int number = UtillitRandom.getRandom(listNameAnimals.size());
+        int number = UtillitRandom.getRandom(nameAnimals.length);
         String foodName = listNameAnimals.get(number);
         List<? extends Animal> animalsList = id.countAnimals(foodName);
         if (!animalsList.isEmpty()) {
             int probabilityEating = probabilityAnimal.get(foodName);
-            if (probabilityEating != 0 && UtillitRandom.getRandom(101) >= probabilityEating) {
+            if (probabilityEating != 0 && UtillitRandom.getRandom(101) <= probabilityEating) {
                 Animal animalFoodObject = animalsList.get(0);
                 id.removeAnimal(foodName, animalFoodObject);
                 double weightFood = animalFoodObject.getWeight();
@@ -73,17 +80,16 @@ public abstract class Raptor implements Animal {
                     weight = weight + maxEat;
                 }
             } else {
-                weight = weight - (weight * 0.10);
+                weight = weight - (weight * lossWeight);
             }
         } else {
-            weight = weight - (weight * 0.10);
+            weight = weight - (weight * lossWeight);
         }
     }
 
     @Override
     public Location move(Location id) {
         int goLocation;
-        String nameClass = this.getClass().getSimpleName();
         int acceptableCountSteps = (int) arraysParametersLocation.get(nameClass)[2];
         int resultMoveSteps = UtillitRandom.getRandom(acceptableCountSteps) + 1;
         int whatDirection = UtillitRandom.getRandom(4) + 1;
@@ -140,7 +146,6 @@ public abstract class Raptor implements Animal {
         if (gender == 2) {
             return;
         }
-        String nameClass = this.getClass().getSimpleName();
         List<? extends Animal> animalsList = id.countAnimals(nameClass);
         if (!animalsList.isEmpty()) {
             List<Raptor> listPair = animalsList.stream().map(e -> (Raptor) e).filter(Raptor::isPair).toList();
@@ -155,11 +160,10 @@ public abstract class Raptor implements Animal {
 
     @Override
     public void dead(Location id) {
-        double expectedWeight = this.weight * 0.25;
+        double expectedWeight = arraysParametersLocation.get(nameClass)[0] * levelLife;
         if (this.weight <= expectedWeight) {
-            id.removeAnimal(this.getClass().getSimpleName(), this);
+            id.removeAnimal(nameClass, this);
         }
-
     }
 
     private Animal addReproduce(String name) {

@@ -4,10 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AnimalParameters {
-    public static final int sizeIsland = 2000;
     public static final int HEIGHT_ISLAND = 20;
     public static final int WEIGHT_ISLAND = 100;
+    public static final int sizeIsland = HEIGHT_ISLAND * WEIGHT_ISLAND;
     public static volatile int idObject = 1;
+    public static double levelLife = 0.50;
+    public static double lossWeight = 0.10;
 
     public static final String[] nameAnimals = {"Wolf, Boa", "Fox", "Bear", "Eagle", "Horse", "Deer", "Rabbit", "Mouse",
             "Goat", "Sheep", "Hog", "Bull", "Duck", "Caterpillar", "Plant"};
