@@ -159,7 +159,15 @@ public class Location {
             default -> throw new RuntimeException("При инициализации не найден подходящий класс");
         }
     }
-    private void lifeCicl(Location id){
-        //TODO дописать логику по жизненному циклу животных
+
+    public void lifeCycle() {
+        for (List<? extends Animal> list : mapsAnimal.values()) {
+            for (Animal animal : list) {
+                animal.eat(this);
+                animal.dead(this);
+                animal.reproduce(this);
+                animal.move(this);
+            }
+        }
     }
 }
