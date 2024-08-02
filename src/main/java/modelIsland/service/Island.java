@@ -16,6 +16,10 @@ public class Island {
         return locations[id];
     }
 
+    public Location[] getIdLocations() {
+        return locations;
+    }
+
     public static Island getIsland() {
         return ISLAND;
     }

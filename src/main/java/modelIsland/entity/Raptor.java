@@ -159,11 +159,13 @@ public abstract class Raptor implements Animal {
     }
 
     @Override
-    public void dead(Location id) {
+    public boolean dead(Location id) {
         double expectedWeight = arraysParametersLocation.get(nameClass)[0] * levelLife;
         if (this.weight <= expectedWeight) {
             id.removeAnimal(nameClass, this);
+            return true;
         }
+        return false;
     }
 
     private Animal addReproduce(String name) {

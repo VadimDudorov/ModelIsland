@@ -164,9 +164,10 @@ public class Location {
         for (List<? extends Animal> list : mapsAnimal.values()) {
             for (Animal animal : list) {
                 animal.eat(this);
-                animal.dead(this);
-                animal.reproduce(this);
-                animal.move(this);
+                if (!animal.dead(this)) {
+                    animal.reproduce(this);
+                    animal.move(this);
+                }
             }
         }
     }

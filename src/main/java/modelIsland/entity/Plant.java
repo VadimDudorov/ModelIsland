@@ -3,6 +3,7 @@ package modelIsland.entity;
 import modelIsland.service.Location;
 
 public class Plant implements Animal {
+    //TODO реализовать логику для растений
     private int weight;
     private int maxLocation;
 
@@ -37,7 +38,7 @@ public class Plant implements Animal {
     }
 
     @Override
-    public void dead(Location id) {
-
+    public boolean dead(Location id) {
+    return false;
     }
 }

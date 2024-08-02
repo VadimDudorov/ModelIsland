@@ -1,16 +1,18 @@
 package modelIsland.thread;
 
-import modelIsland.service.Island;
+import modelIsland.service.Location;
 
-public class ThreadPlainType extends Thread{
-    int countLocation;
-    public ThreadPlainType(int countLocation){
+public class ThreadPlainType extends Thread {
+    Location[] countLocation;
+
+    public ThreadPlainType(Location[] countLocation) {
         this.countLocation = countLocation;
     }
+
     @Override
     public void run() {
-        for (int i = 1; i <= countLocation; i++) {
-            Island.getIsland().getIdLocations(i).lifeCycle();
+        for (int i = 0; i < countLocation.length; i++) {
+            countLocation[i].lifeCycle();
         }
     }
 }

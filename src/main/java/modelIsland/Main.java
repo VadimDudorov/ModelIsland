@@ -1,8 +1,10 @@
 package modelIsland;
 
+import modelIsland.app.Application;
+
 public class Main {
     public static void main(String[] args) {
-        //TODO создать объект application и запустить метод программы
-        System.out.println("Hello world!");
+        Application application = new Application();
+        application.run();
     }
 }

@@ -1,16 +1,18 @@
 package modelIsland.thread;
 
-import modelIsland.service.Island;
+import modelIsland.service.Location;
 
-public class ThreadMountainousType extends Thread{
-    int countLocation;
-    public ThreadMountainousType(int countLocation){
+public class ThreadMountainousType extends Thread {
+    Location[] countLocation;
+
+    public ThreadMountainousType(Location[] countLocation) {
         this.countLocation = countLocation;
     }
+
     @Override
     public void run() {
-        for (int i = 1; i <= countLocation; i++) {
-            Island.getIsland().getIdLocations(i).lifeCycle();
+        for (int i = 0; i < countLocation.length; i++) {
+            countLocation[i].lifeCycle();
         }
     }
 }
