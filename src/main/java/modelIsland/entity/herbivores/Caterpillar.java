@@ -1,6 +1,7 @@
 package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Herbivores;
+import modelIsland.service.Location;
 
 import static modelIsland.repository.AnimalParameters.caterpillarParamsLocation;
 import static modelIsland.repository.AnimalParameters.caterpillarProbability;
@@ -12,5 +13,10 @@ public class Caterpillar extends Herbivores {
                 caterpillarParamsLocation[2],
                 caterpillarParamsLocation[3],
                 caterpillarProbability);
+    }
+
+    @Override
+    public Location move(Location id) {
+        return null;
     }
 }

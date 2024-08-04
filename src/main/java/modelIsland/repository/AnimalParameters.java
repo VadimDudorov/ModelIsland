@@ -10,8 +10,9 @@ public class AnimalParameters {
     public static volatile int idObject = 1;
     public static double levelLife = 0.50;
     public static double lossWeight = 0.10;
+    public static double initializationNumberAnimals = 0.25;
 
-    public static final String[] nameAnimals = {"Wolf, Boa", "Fox", "Bear", "Eagle", "Horse", "Deer", "Rabbit", "Mouse",
+    public static final String[] nameAnimals = {"Wolf", "Boa", "Fox", "Bear", "Eagle", "Horse", "Deer", "Rabbit", "Mouse",
             "Goat", "Sheep", "Hog", "Bull", "Duck", "Caterpillar", "Plant"};
     public static final Map<Integer, String> listNameAnimals = new HashMap<>() {{
         put(0, nameAnimals[0]);

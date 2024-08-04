@@ -28,7 +28,16 @@ public class Location {
     private final List<Caterpillar> caterpillars = new ArrayList<>();
     private final List<Plant> plants = new ArrayList<>();
 
-    private Map<String, List<? extends Animal>> mapsAnimal = new HashMap<>() {{
+    private Map<String, List<? extends Animal>> mapsAnimal = new HashMap<>();
+
+    public Location(int idLocation) {
+        this.idLocation = idLocation;
+        for (int i = 0; i < nameAnimals.length; i++) {
+            int count = (int) arraysParametersLocation.get(nameAnimals[i])[1];
+            for (int j = 1; j < count * initializationNumberAnimals; j++) {
+                initialize(nameAnimals[i]);
+            }
+        }
         mapsAnimal.put(nameAnimals[0], wolfs);
         mapsAnimal.put(nameAnimals[1], boas);
         mapsAnimal.put(nameAnimals[2], foxes);
@@ -37,23 +46,14 @@ public class Location {
         mapsAnimal.put(nameAnimals[5], horses);
         mapsAnimal.put(nameAnimals[6], dears);
         mapsAnimal.put(nameAnimals[7], rabbits);
-        mapsAnimal.put(nameAnimals[8], goats);
-        mapsAnimal.put(nameAnimals[9], sheeps);
-        mapsAnimal.put(nameAnimals[10], hogs);
-        mapsAnimal.put(nameAnimals[11], bulls);
-        mapsAnimal.put(nameAnimals[12], ducks);
-        mapsAnimal.put(nameAnimals[13], caterpillars);
-        mapsAnimal.put(nameAnimals[14], plants);
-    }};
-
-    public Location(int idLocation) {
-        this.idLocation = idLocation;
-        for (int i = 0; i < nameAnimals.length; i++) {
-            int count = (int) arraysParametersLocation.get(nameAnimals[i])[1];
-            for (int j = 1; j < count * 0.25; j++) {
-                initialize(nameAnimals[i]);
-            }
-        }
+        mapsAnimal.put(nameAnimals[8], mouses);
+        mapsAnimal.put(nameAnimals[9], goats);
+        mapsAnimal.put(nameAnimals[10], sheeps);
+        mapsAnimal.put(nameAnimals[11], hogs);
+        mapsAnimal.put(nameAnimals[12], bulls);
+        mapsAnimal.put(nameAnimals[13], ducks);
+        mapsAnimal.put(nameAnimals[14], caterpillars);
+        mapsAnimal.put(nameAnimals[15], plants);
     }
 
     public int getIdLocation() {
@@ -162,7 +162,8 @@ public class Location {
 
     public void lifeCycle() {
         for (List<? extends Animal> list : mapsAnimal.values()) {
-            for (Animal animal : list) {
+            List<? extends Animal> listCopy = new ArrayList<>(list);
+            for (Animal animal : listCopy) {
                 animal.eat(this);
                 if (!animal.dead(this)) {
                     animal.reproduce(this);
@@ -170,5 +171,28 @@ public class Location {
                 }
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                " idLocation=" + idLocation +
+                ", plants=" + plants.size() +
+                ", caterpillars=" + caterpillars.size() +
+                ", ducks=" + ducks.size() +
+                ", bulls=" + bulls.size() +
+                ", hogs=" + hogs.size() +
+                ", sheeps=" + sheeps.size() +
+                ", goats=" + goats.size() +
+                ", mouses=" + mouses.size() +
+                ", rabbits=" + rabbits.size() +
+                ", dears=" + dears.size() +
+                ", horses=" + horses.size() +
+                ", eagles=" + eagles.size() +
+                ", bears=" + bears.size() +
+                ", foxes=" + foxes.size() +
+                ", boas=" + boas.size() +
+                ", wolfs=" + wolfs.size() +
+         " }";
     }
 }

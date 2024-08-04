@@ -12,7 +12,9 @@ public class ThreadDesertType extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < countLocation.length; i++) {
+            System.out.println("До = " + countLocation[i].toString());
             countLocation[i].lifeCycle();
+            System.out.println("После = " + countLocation[i].toString());
         }
     }
 }

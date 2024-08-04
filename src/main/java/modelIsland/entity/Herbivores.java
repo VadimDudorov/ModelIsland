@@ -135,7 +135,7 @@ public abstract class Herbivores implements Animal {
             }
             default -> -1;
         };
-        if (idMoveLocation >= 0) {
+        if (idMoveLocation >= 0 && idMoveLocation < sizeIsland) {
             Location moveLocation = Island.getIsland().getIdLocations(idMoveLocation);
             if (moveLocation.addAnimal(this)) {
                 id.removeAnimal(nameClass, this);
@@ -155,9 +155,9 @@ public abstract class Herbivores implements Animal {
         }
         List<? extends Animal> animalsList = id.countAnimals(nameClass);
         if (!animalsList.isEmpty()) {
-            List<Raptor> listPair = animalsList.stream().map(e -> (Raptor) e).filter(Raptor::isPair).toList();
+            List<Herbivores> listPair = animalsList.stream().map(e -> (Herbivores) e).filter(Herbivores::isPair).toList();
             if (!listPair.isEmpty()) {
-                Raptor animalPair = listPair.get(0);
+                Herbivores animalPair = listPair.get(0);
                 if (id.addAnimal(addReproduce(nameClass))) {
                     animalPair.setPair(false);
                 }

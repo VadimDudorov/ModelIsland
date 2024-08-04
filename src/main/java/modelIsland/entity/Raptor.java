@@ -128,7 +128,7 @@ public abstract class Raptor implements Animal {
             }
             default -> -1;
         };
-        if (idMoveLocation >= 0) {
+        if (idMoveLocation >= 0 && idMoveLocation < sizeIsland) {
             Location moveLocation = Island.getIsland().getIdLocations(idMoveLocation);
             if (moveLocation.addAnimal(this)) {
                 id.removeAnimal(nameClass, this);

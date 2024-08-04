@@ -8,6 +8,7 @@ import modelIsland.thread.ThreadPlainType;
 import modelIsland.thread.ThreadWoodlandType;
 
 public class Application {
+    //TODO сделать сервис ecexutor
     private Location[] desertArrays;
     private Location[] mountainousArrays;
     private Location[] plainArrays;

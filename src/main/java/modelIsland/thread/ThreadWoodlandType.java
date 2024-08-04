@@ -13,6 +13,7 @@ public class ThreadWoodlandType extends Thread {
     public void run() {
         for (int i = 0; i < countLocation.length; i++) {
             countLocation[i].lifeCycle();
+            System.out.println(countLocation[i].toString());
         }
     }
 }
