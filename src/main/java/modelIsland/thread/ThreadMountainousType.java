@@ -2,7 +2,7 @@ package modelIsland.thread;
 
 import modelIsland.service.Location;
 
-public class ThreadMountainousType extends Thread {
+public class ThreadMountainousType implements Runnable {
     Location[] countLocation;
 
     public ThreadMountainousType(Location[] countLocation) {

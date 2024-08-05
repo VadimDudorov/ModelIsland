@@ -2,7 +2,7 @@ package modelIsland.thread;
 
 import modelIsland.service.Location;
 
-public class ThreadPlainType extends Thread {
+public class ThreadPlainType implements Runnable {
     Location[] countLocation;
 
     public ThreadPlainType(Location[] countLocation) {

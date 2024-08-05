@@ -7,8 +7,13 @@ import modelIsland.thread.ThreadMountainousType;
 import modelIsland.thread.ThreadPlainType;
 import modelIsland.thread.ThreadWoodlandType;
 
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
 public class Application {
-    //TODO сделать сервис ecexutor
+    private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(4);
     private Location[] desertArrays;
     private Location[] mountainousArrays;
     private Location[] plainArrays;
@@ -16,14 +21,24 @@ public class Application {
 
     public void run() {
         divisionArray(Island.getIsland().getIdLocations());
-        ThreadDesertType threadDesertType = new ThreadDesertType(desertArrays);
-        ThreadMountainousType threadMountainousType = new ThreadMountainousType(mountainousArrays);
-        ThreadPlainType threadPlainType = new ThreadPlainType(plainArrays);
-        ThreadWoodlandType threadWoodlandType = new ThreadWoodlandType(woodlandArrays);
-        threadDesertType.start();
-        threadMountainousType.start();
-        threadPlainType.start();
-        threadWoodlandType.start();
+        List<Runnable> runnableList = List.of(
+                new ThreadDesertType(desertArrays),
+                new ThreadMountainousType(mountainousArrays),
+                new ThreadPlainType(plainArrays),
+                new ThreadWoodlandType(woodlandArrays)
+        );
+        for (Runnable runnable : runnableList) {
+            scheduledExecutorService.scheduleWithFixedDelay(runnable, 1, 2, TimeUnit.SECONDS);
+        }
+
+        try {
+            if (!scheduledExecutorService.awaitTermination(5, TimeUnit.SECONDS)) {
+                System.out.println("Останавливаем сервис");
+                scheduledExecutorService.shutdown();
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException("Executor сервис завершился не корректно",e);
+        }
     }
 
     private void divisionArray(Location[] locations) {
