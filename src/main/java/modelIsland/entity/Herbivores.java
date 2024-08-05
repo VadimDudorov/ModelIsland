@@ -155,7 +155,8 @@ public abstract class Herbivores implements Animal {
         }
         List<? extends Animal> animalsList = id.countAnimals(nameClass);
         if (!animalsList.isEmpty()) {
-            List<Herbivores> listPair = animalsList.stream().map(e -> (Herbivores) e).filter(Herbivores::isPair).toList();
+            List<Herbivores> listPair = animalsList.stream().map(e -> (Herbivores) e).filter(e -> e.getGender() == 2)
+                    .filter(Herbivores::isPair).toList();
             if (!listPair.isEmpty()) {
                 Herbivores animalPair = listPair.get(0);
                 if (id.addAnimal(addReproduce(nameClass))) {

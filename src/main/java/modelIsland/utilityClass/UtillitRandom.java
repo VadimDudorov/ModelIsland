@@ -1,11 +1,10 @@
 package modelIsland.utilityClass;
 
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class UtillitRandom {
-    private static Random random = new Random();
 
-    public static synchronized int getRandom(int number) {
-        return random.nextInt(number);
+    public static int getRandom(int number) {
+        return ThreadLocalRandom.current().nextInt(number);
     }
 }

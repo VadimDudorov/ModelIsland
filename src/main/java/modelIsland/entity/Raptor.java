@@ -148,7 +148,8 @@ public abstract class Raptor implements Animal {
         }
         List<? extends Animal> animalsList = id.countAnimals(nameClass);
         if (!animalsList.isEmpty()) {
-            List<Raptor> listPair = animalsList.stream().map(e -> (Raptor) e).filter(Raptor::isPair).toList();
+            List<Raptor> listPair = animalsList.stream().map(e -> (Raptor) e).filter(e -> e.getGender() == 2)
+                    .filter(Raptor::isPair).toList();
             if (!listPair.isEmpty()) {
                 Raptor animalPair = listPair.get(0);
                 if (id.addAnimal(addReproduce(nameClass))) {

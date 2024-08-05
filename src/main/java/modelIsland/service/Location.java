@@ -38,22 +38,22 @@ public class Location {
                 initialize(nameAnimals[i]);
             }
         }
-        mapsAnimal.put(nameAnimals[0], wolfs);
-        mapsAnimal.put(nameAnimals[1], boas);
-        mapsAnimal.put(nameAnimals[2], foxes);
-        mapsAnimal.put(nameAnimals[3], bears);
-        mapsAnimal.put(nameAnimals[4], eagles);
-        mapsAnimal.put(nameAnimals[5], horses);
-        mapsAnimal.put(nameAnimals[6], dears);
-        mapsAnimal.put(nameAnimals[7], rabbits);
-        mapsAnimal.put(nameAnimals[8], mouses);
-        mapsAnimal.put(nameAnimals[9], goats);
-        mapsAnimal.put(nameAnimals[10], sheeps);
-        mapsAnimal.put(nameAnimals[11], hogs);
-        mapsAnimal.put(nameAnimals[12], bulls);
-        mapsAnimal.put(nameAnimals[13], ducks);
-        mapsAnimal.put(nameAnimals[14], caterpillars);
         mapsAnimal.put(nameAnimals[15], plants);
+        mapsAnimal.put(nameAnimals[14], caterpillars);
+        mapsAnimal.put(nameAnimals[13], ducks);
+        mapsAnimal.put(nameAnimals[12], bulls);
+        mapsAnimal.put(nameAnimals[11], hogs);
+        mapsAnimal.put(nameAnimals[10], sheeps);
+        mapsAnimal.put(nameAnimals[9], goats);
+        mapsAnimal.put(nameAnimals[8], mouses);
+        mapsAnimal.put(nameAnimals[7], rabbits);
+        mapsAnimal.put(nameAnimals[6], dears);
+        mapsAnimal.put(nameAnimals[5], horses);
+        mapsAnimal.put(nameAnimals[4], eagles);
+        mapsAnimal.put(nameAnimals[3], bears);
+        mapsAnimal.put(nameAnimals[2], foxes);
+        mapsAnimal.put(nameAnimals[1], boas);
+        mapsAnimal.put(nameAnimals[0], wolfs);
     }
 
     public int getIdLocation() {
