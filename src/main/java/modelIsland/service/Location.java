@@ -29,6 +29,7 @@ public class Location {
     private final List<Plant> plants = new ArrayList<>();
 
     private Map<String, List<? extends Animal>> mapsAnimal = new HashMap<>();
+    //TODO написать логику по сбору статистики
 
     public Location(int idLocation) {
         this.idLocation = idLocation;
