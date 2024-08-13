@@ -2,18 +2,10 @@ package modelIsland.thread;
 
 import modelIsland.service.Location;
 
-public class ThreadWoodlandType implements Runnable {
-    Location[] countLocation;
+public class ThreadWoodlandType extends ThreadType {
+    private static final String NAME_TYPE = "WoodlandType";
 
     public ThreadWoodlandType(Location[] countLocation) {
-        this.countLocation = countLocation;
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < countLocation.length; i++) {
-            countLocation[i].lifeCycle();
-            System.out.println(countLocation[i].toString());
-        }
+        super(countLocation, NAME_TYPE);
     }
 }
