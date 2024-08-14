@@ -1,27 +1,35 @@
 package modelIsland.thread;
 
+import modelIsland.controller.MainController;
 import modelIsland.service.Location;
+import modelIsland.view.View;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import static modelIsland.repository.AnimalParameters.nameAnimals;
 
-public abstract class ThreadType implements Runnable{
+public abstract class ThreadType implements Runnable {
     private Location[] countLocation;
     private String nameType;
+    private MainController mainController;
+    private Map<String, Integer> countAnimals;
+    private View view;
 
-    public ThreadType(Location[] countLocation, String nameType) {
+    public ThreadType(Location[] countLocation, String nameType, MainController mainController) {
         this.countLocation = countLocation;
         this.nameType = nameType;
+        this.mainController = mainController;
+        view = mainController.getView();
     }
 
     @Override
     public void run() {
         for (int i = 0; i < countLocation.length; i++) {
-            System.out.println("Локация: " + nameType + " До = " + locationStatistics());
             countLocation[i].lifeCycle();
-            System.out.println("Локация: " + nameType + " После = " + locationStatistics());
+        }
+        for (String name : nameAnimals) {
+            view.changeType(nameType, name, locationStatistics().get(name));
         }
     }
 

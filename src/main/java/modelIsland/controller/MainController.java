@@ -2,6 +2,13 @@ package modelIsland.controller;
 
 import modelIsland.view.View;
 
-public class MainController implements View {
-    //TODO дописать логику по приему view
+public class MainController{
+    private View view;
+    public MainController(View view){
+        this.view = view;
+    }
+
+    public View getView() {
+        return view;
+    }
 }

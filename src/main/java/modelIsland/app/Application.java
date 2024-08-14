@@ -1,5 +1,6 @@
 package modelIsland.app;
 
+import modelIsland.controller.MainController;
 import modelIsland.service.Island;
 import modelIsland.service.Location;
 import modelIsland.thread.ThreadDesertType;
@@ -13,26 +14,31 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Application {
+    private MainController mainController;
     private ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(4);
     private Location[] desertArrays;
     private Location[] mountainousArrays;
     private Location[] plainArrays;
     private Location[] woodlandArrays;
 
+    public Application(MainController mainController){
+        this.mainController = mainController;
+    }
+
     public void run() {
         divisionArray(Island.getIsland().getIdLocations());
         List<Runnable> runnableList = List.of(
-                new ThreadDesertType(desertArrays),
-                new ThreadMountainousType(mountainousArrays),
-                new ThreadPlainType(plainArrays),
-                new ThreadWoodlandType(woodlandArrays)
+                new ThreadDesertType(desertArrays, mainController),
+                new ThreadMountainousType(mountainousArrays, mainController),
+                new ThreadPlainType(plainArrays, mainController),
+                new ThreadWoodlandType(woodlandArrays, mainController)
         );
         for (Runnable runnable : runnableList) {
             scheduledExecutorService.scheduleWithFixedDelay(runnable, 1, 2, TimeUnit.SECONDS);
         }
 
         try {
-            if (!scheduledExecutorService.awaitTermination(5, TimeUnit.SECONDS)) {
+            if (!scheduledExecutorService.awaitTermination(30, TimeUnit.SECONDS)) {
                 System.out.println("Останавливаем сервис");
                 scheduledExecutorService.shutdown();
             }
