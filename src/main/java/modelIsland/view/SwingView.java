@@ -9,7 +9,14 @@ import java.util.Objects;
 import static modelIsland.repository.AnimalParameters.nameAnimals;
 
 public class SwingView extends JFrame implements View {
-    //TODO дописать кнопки для 4-рех типов + растения не создаются в начале - исправить
+    //TODO кнопка стоп не работает
+    boolean isStart = true;
+    boolean isStop = false;
+
+    public boolean isStop() {
+        return isStop;
+    }
+
     private static final String NAME_TYPE_DESERT = "DesertType";
     private static final String NAME_TYPE_MOUNTAINOUS = "MountainousType";
     private static final String NAME_TYPE_PLAIN = "PlainType";
@@ -98,6 +105,7 @@ public class SwingView extends JFrame implements View {
         threadPlainType();
         threadWoodlandType();
 
+
         initializationIcon();
         initializationFrame();
 
@@ -168,6 +176,11 @@ public class SwingView extends JFrame implements View {
         mapNameAnimalWoodland.put(nameAnimals[13], jTextWoodlandDuck);
         mapNameAnimalWoodland.put(nameAnimals[14], jTextWoodlandCaterpillar);
         mapNameAnimalWoodland.put(nameAnimals[15], jTextWoodlandPlant);
+
+        while (isStart){
+            System.out.println("Waiting");
+        }
+        System.out.println("Start");
     }
 
     private void initializationFrame() {
@@ -192,12 +205,13 @@ public class SwingView extends JFrame implements View {
     private void initializationWindow() {
         JButton start = new JButton("Start");
         start.setBounds(5, 25, 80, 35);
+        start.addActionListener(e -> isStart = false);
         this.add(start);
 
         JButton stop = new JButton("Stop");
         stop.setBounds(5, 65, 80, 35);
+        stop.addActionListener(e -> isStop = true);
         this.add(stop);
-
     }
 
     private void threadDesertType() {

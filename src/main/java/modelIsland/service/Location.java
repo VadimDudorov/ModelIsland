@@ -34,7 +34,7 @@ public class Location {
         this.idLocation = idLocation;
         for (int i = 0; i < nameAnimals.length; i++) {
             int count = (int) arraysParametersLocation.get(nameAnimals[i])[1];
-            for (int j = 1; j < count * initializationNumberAnimals; j++) {
+            for (int j = 0; j < count * initializationNumberAnimals; j++) {
                 initialize(nameAnimals[i]);
             }
         }

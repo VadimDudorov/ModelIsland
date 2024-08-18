@@ -21,7 +21,7 @@ public class Application {
     private Location[] plainArrays;
     private Location[] woodlandArrays;
 
-    public Application(MainController mainController){
+    public Application(MainController mainController) {
         this.mainController = mainController;
     }
 
@@ -34,16 +34,15 @@ public class Application {
                 new ThreadWoodlandType(woodlandArrays, mainController)
         );
         for (Runnable runnable : runnableList) {
-            scheduledExecutorService.scheduleWithFixedDelay(runnable, 1, 2, TimeUnit.SECONDS);
+            scheduledExecutorService.scheduleWithFixedDelay(runnable, 1, 1, TimeUnit.SECONDS);
         }
 
-        try {
-            if (!scheduledExecutorService.awaitTermination(30, TimeUnit.SECONDS)) {
+        while (true) {
+            if (mainController.getView().isStop()) {
                 System.out.println("Останавливаем сервис");
                 scheduledExecutorService.shutdown();
+                break;
             }
-        } catch (InterruptedException e) {
-            throw new RuntimeException("Executor сервис завершился не корректно",e);
         }
     }
 
