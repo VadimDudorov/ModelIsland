@@ -9,7 +9,6 @@ import java.util.Objects;
 import static modelIsland.repository.AnimalParameters.nameAnimals;
 
 public class SwingView extends JFrame implements View {
-    //TODO кнопка стоп не работает
     boolean isStart = true;
     boolean isStop = false;
 
