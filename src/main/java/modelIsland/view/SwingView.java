@@ -177,7 +177,7 @@ public class SwingView extends JFrame implements View {
         mapNameAnimalWoodland.put(nameAnimals[14], jTextWoodlandCaterpillar);
         mapNameAnimalWoodland.put(nameAnimals[15], jTextWoodlandPlant);
 
-        while (isStart){
+        while (isStart) {
             System.out.println("Waiting");
         }
         System.out.println("Start");

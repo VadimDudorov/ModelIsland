@@ -38,6 +38,7 @@ public class Application {
         }
 
         while (true) {
+            System.out.println();
             if (mainController.getView().isStop()) {
                 System.out.println("Останавливаем сервис");
                 scheduledExecutorService.shutdown();
