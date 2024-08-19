@@ -215,11 +215,6 @@ public class SwingView extends JFrame implements View {
     }
 
     private void threadDesertType() {
-//        {"Волк", "Удав", "Лиса", "Медведь", "Орел", "Лошадь", "Олень", "Кролик", "Мышь",
-//                "Коза", "Овца", "Кабан", "Бык", "Утка", "Гусеница", "Растение"}
-//
-//        {"Wolf", "Boa", "Fox", "Bear", "Eagle", "Horse", "Deer", "Rabbit", "Mouse",
-//                "Goat", "Sheep", "Hog", "Bull", "Duck", "Caterpillar", "Plant"};
 
         JLabel labelDesertWolf = new JLabel("\uD83D\uDC3A");
         labelDesertWolf.setBounds(130, 90, 25, 25);

@@ -11,7 +11,7 @@ public class Plant implements Animal {
     private int idObject = AnimalParameters.idObject++;
     private int weight;
     private int maxLocation;
-    private int gender = UtillitRandom.getRandom(2);
+    private int gender = UtillitRandom.getRandom(2) + 1;
     private String nameClass = this.getClass().getSimpleName();
 
     public double getWeight() {

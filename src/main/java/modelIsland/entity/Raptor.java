@@ -18,8 +18,8 @@ public abstract class Raptor implements Animal {
     private double maxLocation;
     private double maxMove;
     private double maxEat;
-    private int gender = UtillitRandom.getRandom(2);
-    private boolean pair;
+    private int gender = UtillitRandom.getRandom(2) + 1;
+    private boolean pair = true;
     private Map<String, Integer> probabilityAnimal;
     private String nameClass = this.getClass().getSimpleName();
 

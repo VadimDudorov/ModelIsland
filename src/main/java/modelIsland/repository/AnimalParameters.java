@@ -9,8 +9,8 @@ public class AnimalParameters {
     public static final int sizeIsland = HEIGHT_ISLAND * WEIGHT_ISLAND;
     public static volatile int idObject = 1;
     public static double levelLife = 0.50;
-    public static double lossWeight = 0.10;
-    public static double initializationNumberAnimals = 0.25;
+    public static double lossWeight = 0.17;
+    public static double initializationNumberAnimals = 0.1;
 
     public static final String[] nameAnimals = {"Wolf", "Boa", "Fox", "Bear", "Eagle", "Horse", "Deer", "Rabbit", "Mouse",
             "Goat", "Sheep", "Hog", "Bull", "Duck", "Caterpillar", "Plant"};
