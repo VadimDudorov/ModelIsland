@@ -1,7 +1,7 @@
 package modelIsland.entity.herbivores;
 
 import modelIsland.entity.Animal;
-import modelIsland.entity.Herbivores;
+import modelIsland.service.Herbivores;
 import modelIsland.service.Location;
 import modelIsland.utilityClass.UtillitRandom;
 

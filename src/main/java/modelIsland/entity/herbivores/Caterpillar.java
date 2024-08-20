@@ -1,6 +1,6 @@
 package modelIsland.entity.herbivores;
 
-import modelIsland.entity.Herbivores;
+import modelIsland.service.Herbivores;
 import modelIsland.service.Location;
 
 import static modelIsland.repository.AnimalParameters.caterpillarParamsLocation;

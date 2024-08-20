@@ -1,6 +1,6 @@
 package modelIsland.entity.raptor;
 
-import modelIsland.entity.Raptor;
+import modelIsland.service.Raptor;
 
 import static modelIsland.repository.AnimalParameters.boaParamsLocation;
 import static modelIsland.repository.AnimalParameters.boaProbability;

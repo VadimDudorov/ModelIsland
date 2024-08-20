@@ -1,6 +1,6 @@
 package modelIsland.entity.herbivores;
 
-import modelIsland.entity.Herbivores;
+import modelIsland.service.Herbivores;
 
 import static modelIsland.repository.AnimalParameters.horseParamsLocation;
 import static modelIsland.repository.AnimalParameters.horseProbability;

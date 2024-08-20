@@ -1,7 +1,6 @@
-package modelIsland.entity;
+package modelIsland.service;
 
-import modelIsland.service.Island;
-import modelIsland.service.Location;
+import modelIsland.entity.Animal;
 import modelIsland.entity.raptor.*;
 import modelIsland.repository.AnimalParameters;
 import modelIsland.utilityClass.UtillitRandom;
