@@ -32,10 +32,10 @@ public class Location {
 
     public Location(int idLocation) {
         this.idLocation = idLocation;
-        for (int i = 0; i < nameAnimals.length; i++) {
-            int count = (int) arraysParametersLocation.get(nameAnimals[i])[1];
+        for (String nameAnimal : nameAnimals) {
+            int count = (int) arraysParametersLocation.get(nameAnimal)[1];
             for (int j = 0; j < count * initializationNumberAnimals; j++) {
-                initialize(nameAnimals[i]);
+                initialize(nameAnimal);
             }
         }
         mapsAnimal.put(nameAnimals[15], plants);
